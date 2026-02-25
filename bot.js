@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import TelegramBot from 'node-telegram-bot-api';
 import { createClient } from '@supabase/supabase-js';
 
@@ -73,6 +75,8 @@ bot.on('message', async (msg) => {
     }
 });
 
+import http from 'http';
+
 bot.on('callback_query', async (query) => {
     const chatId = query.message.chat.id.toString();
     if (chatId !== TELEGRAM_CHAT_ID) return;
@@ -102,4 +106,14 @@ bot.on('callback_query', async (query) => {
     }
 });
 
-console.log('Bot is running...');
+// Create a dummy HTTP server so Render doesn't shut the bot down
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Telegram bot is online and polling!\n');
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Dummy web server started on port ${PORT}`);
+    console.log('Bot is running...');
+});
