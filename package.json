@@ -1,0 +1,17 @@
+{
+  "name": "media-task-manager-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for Media Task Manager",
+  "main": "bot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "dotenv": "^17.3.1",
+    "node-telegram-bot-api": "^0.65.0"
+  }
+}
