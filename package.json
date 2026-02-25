@@ -5,7 +5,8 @@
   "main": "bot.js",
   "type": "module",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "build": "node generate-config.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
